@@ -6,6 +6,7 @@ import {
   RiEyeOffLine,
 } from "react-icons/ri";
 
+import { toast } from "react-toastify";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
@@ -17,7 +18,21 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, password);
+    if ([email, password].includes("")) {
+      toast.error("Todos los campos son obligatorios", {
+        theme: "dark",
+        position:'top-center'
+      });
+      return;
+    }
+    if (password.length < 6) {
+      toast.error("El password debe contener al menos 6 caracteres", {
+        theme: "dark",
+      });
+      return;
+    }
+
+    console.log("correcto");
   };
 
   return (
