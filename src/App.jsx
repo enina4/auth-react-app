@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 //layout
 import AuthLayout from "./layouts/auth/AuthLayout";
@@ -11,7 +11,6 @@ import ChangePassword from "./pages/auth/ChangePassword";
 import Error404 from "./pages/404";
 function App() {
   return (
-    <BrowserRouter>
       <Routes>
         <Route path="/" element={<AuthLayout />}>
           <Route index element={<Login />}></Route>
@@ -21,7 +20,6 @@ function App() {
         </Route>
         <Route path="*" element={<Error404/>}></Route>
       </Routes>
-    </BrowserRouter>
   );
 }
 
