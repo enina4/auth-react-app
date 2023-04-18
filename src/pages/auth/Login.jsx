@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   RiMailLine,
   RiLockLine,
@@ -21,7 +22,7 @@ const Login = () => {
     if ([email, password].includes("")) {
       toast.error("Todos los campos son obligatorios", {
         theme: "dark",
-        position:'top-center'
+        position: "top-center",
       });
       return;
     }
@@ -42,7 +43,7 @@ const Login = () => {
           Iniciar Sesión
         </h1>
       </div>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 mb-6">
         <div className="relative">
           <RiMailLine className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-500" />
           <input
@@ -74,12 +75,29 @@ const Login = () => {
             />
           )}
         </div>
+        <div className="text-right">
+          <Link
+            to={"forget-password"}
+            className="text-gray-500 hover:underline transition-colors"
+          >
+            ¿Olvidaste tu password?
+          </Link>
+        </div>
         <div>
           <button className="mt-6 bg-sky-600 text-white w-full py-2 px-6 rounded-lg hover:scale-105 transition-all font-bold">
             Ingresar
           </button>
         </div>
       </form>
+      <div className="text-center">
+        ¿No tienes una cuenta?
+        <Link
+          to="/register"
+          className="text-sky-600 font-medium hover:underline transition-all"
+        >
+          Regístrate
+        </Link>
+      </div>
     </div>
   );
 };
